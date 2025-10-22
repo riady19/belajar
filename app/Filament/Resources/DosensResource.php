@@ -40,7 +40,7 @@ class DosensResource extends Resource
                     ->maxLength(1),
                 Forms\Components\Textarea::make('alamat')
                     ->columnSpanFull(),
-                Forms\Components\Textarea::make('no_hp')
+                Forms\Components\TextInput::make('no_hp')
                     ->columnSpanFull(),
                 
             ]);

@@ -21,7 +21,7 @@ class BlogPostsChart extends ChartWidget
         return [
              'datasets' => [
             [
-                'label' => 'Blog posts created',
+                'label' => 'Grafik Data',
                 'data' => [$countDosens, $countMahasiswa, $countUser],
                 'backgroundColor' => '#36A2EB',
                 'borderColor' => '#9BD0F5',
