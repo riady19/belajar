@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Filament\Forms\Components\FileUpload;
 
 class Dosens extends Model
 {
@@ -17,8 +18,10 @@ class Dosens extends Model
         'jenis_kelamin',
         'alamat',
         'no_hp',
+        'gambar',
     ];
       protected $cast = [
         'tangal_lahir' => 'date'
+    
     ];
 }

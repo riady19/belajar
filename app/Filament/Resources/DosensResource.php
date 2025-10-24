@@ -6,6 +6,7 @@ use App\Filament\Resources\DosensResource\Pages;
 use App\Filament\Resources\DosensResource\RelationManagers;
 use App\Models\Dosens;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -22,10 +23,13 @@ class DosensResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
+         
              ->schema([
+                
                 Forms\Components\TextInput::make('nama')
                     ->required()
                     ->maxLength(100),
+                   
                 Forms\Components\TextInput::make('nip')
                     ->required()
                     ->maxLength(20),
@@ -42,6 +46,9 @@ class DosensResource extends Resource
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('no_hp')
                     ->columnSpanFull(),
+                     FileUpload::make('gambar')
+                      ->image()
+                       ->panelLayout('grid')
                 
             ]);
     }
@@ -65,6 +72,11 @@ class DosensResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('no_hp')
                     ->searchable(),
+                    Tables\Columns\ImageColumn::make('gambar')
+                   ->searchable(''),
+                   
+                   
+   
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

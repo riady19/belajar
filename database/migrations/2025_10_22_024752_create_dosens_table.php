@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('jenis_kelamin', 1)->comment('L=Laki-laki, P=Perempuan');
             $table->text('alamat')->nullable();
             $table->text('no_hp', 20);
+             $table->string('gambar', 255)->nullable();
 
             $table->timestamps();
         });
