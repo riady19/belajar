@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Mahasiswa\Resources;
 
-use App\Filament\Resources\DosensResource\Pages;
-use App\Filament\Resources\DosensResource\RelationManagers;
-use App\Models\Dosens;
+use App\Filament\Mahasiswa\Resources\MahasiswaResource\Pages;
+use App\Filament\Mahasiswa\Resources\MahasiswaResource\RelationManagers;
+use App\Models\Mahasiswa;
 use Filament\Forms;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -14,23 +13,20 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class DosensResource extends Resource
+class MahasiswaResource extends Resource
 {
-    protected static ?string $model = Dosens::class;
+    protected static ?string $model = Mahasiswa::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
         return $form
-         
-             ->schema([
-                
+            ->schema([
                 Forms\Components\TextInput::make('nama')
                     ->required()
                     ->maxLength(100),
-                   
-                Forms\Components\TextInput::make('nip')
+                Forms\Components\TextInput::make('nim')
                     ->required()
                     ->maxLength(20),
                 Forms\Components\TextInput::make('email')
@@ -44,12 +40,6 @@ class DosensResource extends Resource
                     ->maxLength(1),
                 Forms\Components\Textarea::make('alamat')
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('no_hp')
-                    ->columnSpanFull(),
-                     FileUpload::make('gambar')
-                      ->image()
-                       
-                
             ]);
     }
 
@@ -57,9 +47,9 @@ class DosensResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nama')
+                 Tables\Columns\TextColumn::make('nama')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('nip')
+                Tables\Columns\TextColumn::make('nim')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
@@ -68,15 +58,6 @@ class DosensResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('jenis_kelamin')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('alamat')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('no_hp')
-                    ->searchable(),
-                    Tables\Columns\ImageColumn::make('gambar')
-                   ->searchable(''),
-                   
-                   
-   
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -109,9 +90,9 @@ class DosensResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListDosens::route('/'),
-            'create' => Pages\CreateDosens::route('/create'),
-            'edit' => Pages\EditDosens::route('/{record}/edit'),
+            'index' => Pages\ListMahasiswas::route('/'),
+            'create' => Pages\CreateMahasiswa::route('/create'),
+            'edit' => Pages\EditMahasiswa::route('/{record}/edit'),
         ];
     }
 }
